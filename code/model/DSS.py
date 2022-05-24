@@ -33,6 +33,5 @@ class DSS:
         
         if text == '':
             text = f'El jugador no posee ninguna estadística mayor a {self.threshold} (Encestador: {b}, Altura: {h}, Tiempo{t})' 
-        print('values', b, h, t)
-        print('rules ', r1, r2, r3)
+
         return (max(max(r1, r2), r3)), text
