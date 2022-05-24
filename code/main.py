@@ -7,15 +7,17 @@ efectividad = [12, 17, 25, 25]
 altura = [170, 195, 220, 220]
 sprint = [0, 0, 10, 15]
 
+"""
 Basket_maker  = Premise(efectividad)
 Tall          = Premise(altura)
 Sprinter      = Premise(sprint)
 
+
 R1 = Rule((Basket_maker, Tall),      0.80)
 R2 = Rule((Basket_maker, Sprinter),  0.95)
 R3 = Rule((Tall,         Sprinter),  0.75)
-
-dss = DSS((R1, R2, R3))
+"""
+dss = DSS([efectividad, altura, sprint], [0.80, .95, 0.75], threshold=0.9)
 
 print('Bienvenidx al sistema de asistencia de preselección de jugadores de Basketball')
 
@@ -35,8 +37,9 @@ while True:
     while time < 0:
         time = float(input('Ingrese un tiempo válido (0 <= int)'))
 
-    puntaje = dss(basket, height, time)
-    print(f'El usuario {name} tiene un puntaje de: {puntaje}')
+    puntaje, text = dss(basket, height, time)
+    print(f'El usuario {name} es adecuado para el equipo con certeza: {puntaje}')
+    print(text)  
 
 
 
