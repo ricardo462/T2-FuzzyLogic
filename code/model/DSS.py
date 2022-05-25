@@ -13,15 +13,15 @@ class DSS:
         height_ = self.premises[1](height)
         time_ = self.premises[2](time)
         stats = [baskets_, height_, time_]
-        #print(f' values: {baskets, height, time}')
 
         r1 = self.rules[0].feed(baskets_, height_)
         r2 = self.rules[1].feed(baskets_, time_  )
-        r3 = self.rules[1].feed(height_,   time_  )
+        r3 = self.rules[2].feed(height_,   time_  )
         
         text = ''
         
         b, h, t = round(baskets_, 2), round(height_, 2), round(time_, 2)
+        print(f'Baskets: {b}, Height: {h}, Time: {t}')
         if stats[0] >= self.threshold:
             text += f'\n Se evaluó como buen encestador, con un valor de certeza {b} (anotó {baskets} canastas)'
 

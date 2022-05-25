@@ -7,7 +7,7 @@ efectividad = [12, 17, 25, 25]
 altura = [170, 195, 220, 220]
 sprint = [0, 0, 10, 15]
 
-dss = DSS([efectividad, altura, sprint], [0.80, .95, 0.75], threshold=0.9)
+dss = DSS([efectividad, altura, sprint], [0.80, .95, 0.75], threshold=0.65)
 connection = sqlite3.connect('competitors.db')
 cursor = connection.cursor()
 
@@ -31,6 +31,7 @@ while True:
 
     score, text = dss(basket, height, time)
     print(f'El usuario {name} es adecuado para el equipo con certeza: {score}')
+    print(text)
 
     cursor.execute('INSERT INTO competitors VALUES (?, ?, ?, ?, ?)', (name, basket, height, time, score))
     connection.commit()
@@ -39,6 +40,6 @@ while True:
     if continue_ == 'n':
         break
 
-data_frame = pd.read_sql_query("SELECT * FROM competitors" , connection)
+data_frame = pd.read_sql_query("SELECT * FROM competitors ORDER BY score DESC" , connection)
 connection.close()
 print(data_frame)
