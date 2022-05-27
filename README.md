@@ -1,4 +1,8 @@
 # T2-FuzzyLogic
+The needed packages for this program are:
+- Pandas
+- Sqlite3
+
 This is the implementation of the a Decision Support System (DSS) for the selection of a basketball team. There
 were considered three caracteristics:
 - Efectiveness: number of baskets of 25 attemps
