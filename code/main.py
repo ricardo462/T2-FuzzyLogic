@@ -1,4 +1,3 @@
-from errno import ELIBBAD
 from model.DSS import DSS, sum_prod, lukasiewicz, drastic_sum
 import sqlite3
 import pandas as pd
